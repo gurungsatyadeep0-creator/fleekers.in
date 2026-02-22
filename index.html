@@ -1,0 +1,1716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FLEEKERS — DROP 01 | Essential Streetwear</title>
+<meta name="description" content="Fleekers Drop 01 - Limited heavyweight oversized tees. 240 GSM premium cotton. Bet on yourself.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--bg:#0a0a0a;
+--bg-soft:#111111;
+--bg-card:#161616;
+--text:#ffffff;
+--text-muted:#888888;
+--accent:#ccff00;
+--accent-hover:#b8e600;
+--beige:#e8e6e1;
+--danger:#ff3333;
+--success:#00ff88;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+background:var(--bg);
+color:var(--text);
+line-height:1.6;
+overflow-x:hidden;
+}
+
+/* Preloader */
+#preloader{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:var(--bg);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+transition:opacity 0.5s ease;
+}
+
+.loader-text{
+font-size:clamp(40px,8vw,120px);
+font-weight:900;
+letter-spacing:-4px;
+animation:pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse{
+0%,100%{opacity:1;transform:scale(1);}
+50%{opacity:0.5;transform:scale(0.98);}
+}
+
+/* Noise Overlay */
+.noise{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+z-index:9998;
+opacity:0.03;
+background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Navigation */
+nav{
+position:fixed;
+top:0;
+width:100%;
+padding:20px 5%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:1000;
+backdrop-filter:blur(10px);
+background:rgba(10,10,10,0.8);
+border-bottom:1px solid rgba(255,255,255,0.05);
+transition:all 0.3s ease;
+}
+
+nav.scrolled{
+padding:15px 5%;
+background:rgba(10,10,10,0.95);
+}
+
+.logo{
+font-size:24px;
+font-weight:900;
+letter-spacing:-1px;
+color:var(--text);
+}
+
+.logo span{
+color:var(--accent);
+}
+
+.nav-links{
+display:flex;
+gap:40px;
+align-items:center;
+}
+
+.nav-links a{
+color:var(--text-muted);
+text-decoration:none;
+font-size:14px;
+font-weight:500;
+text-transform:uppercase;
+letter-spacing:1px;
+transition:color 0.3s ease;
+position:relative;
+}
+
+.nav-links a:hover{
+color:var(--text);
+}
+
+.nav-links a::after{
+content:'';
+position:absolute;
+bottom:-5px;
+left:0;
+width:0;
+height:2px;
+background:var(--accent);
+transition:width 0.3s ease;
+}
+
+.nav-links a:hover::after{
+width:100%;
+}
+
+.cart-btn{
+background:var(--accent);
+color:#000;
+border:none;
+padding:12px 24px;
+font-weight:700;
+font-size:13px;
+text-transform:uppercase;
+letter-spacing:1px;
+cursor:pointer;
+transition:all 0.3s ease;
+border-radius:0;
+}
+
+.cart-btn:hover{
+background:var(--accent-hover);
+transform:translateY(-2px);
+}
+
+.mobile-menu{
+display:none;
+flex-direction:column;
+gap:5px;
+cursor:pointer;
+}
+
+.mobile-menu span{
+width:25px;
+height:2px;
+background:var(--text);
+transition:0.3s;
+}
+
+/* Hero Section */
+.hero{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+position:relative;
+overflow:hidden;
+padding:0 5%;
+}
+
+.hero-bg{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+}
+
+.hero-bg::before{
+content:'';
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:radial-gradient(circle at 30% 50%,rgba(204,255,0,0.1) 0%,transparent 50%),
+radial-gradient(circle at 70% 80%,rgba(204,255,0,0.05) 0%,transparent 40%);
+}
+
+.hero-content{
+max-width:900px;
+position:relative;
+z-index:1;
+}
+
+.badge{
+display:inline-block;
+background:var(--accent);
+color:#000;
+padding:8px 16px;
+font-size:12px;
+font-weight:800;
+text-transform:uppercase;
+letter-spacing:2px;
+margin-bottom:30px;
+animation:slideIn 0.8s ease;
+}
+
+@keyframes slideIn{
+from{opacity:0;transform:translateX(-30px);}
+to{opacity:1;transform:translateX(0);}
+}
+
+.hero h1{
+font-size:clamp(48px,10vw,140px);
+font-weight:900;
+line-height:0.9;
+letter-spacing:-4px;
+margin-bottom:30px;
+text-transform:uppercase;
+}
+
+.hero h1 .outline{
+color:transparent;
+-webkit-text-stroke:2px var(--text);
+text-stroke:2px var(--text);
+display:block;
+}
+
+.hero h1 .filled{
+color:var(--text);
+display:block;
+}
+
+.hero-subtitle{
+font-size:clamp(18px,2vw,24px);
+color:var(--text-muted);
+max-width:500px;
+margin-bottom:40px;
+line-height:1.6;
+}
+
+.hero-cta{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+align-items:center;
+}
+
+.btn-primary{
+background:var(--accent);
+color:#000;
+border:none;
+padding:20px 48px;
+font-size:16px;
+font-weight:800;
+text-transform:uppercase;
+letter-spacing:2px;
+cursor:pointer;
+transition:all 0.3s ease;
+position:relative;
+overflow:hidden;
+}
+
+.btn-primary:hover{
+transform:translateY(-3px);
+box-shadow:0 20px 40px rgba(204,255,0,0.3);
+}
+
+.btn-secondary{
+background:transparent;
+color:var(--text);
+border:2px solid rgba(255,255,255,0.2);
+padding:18px 46px;
+font-size:16px;
+font-weight:700;
+text-transform:uppercase;
+letter-spacing:2px;
+cursor:pointer;
+transition:all 0.3s ease;
+}
+
+.btn-secondary:hover{
+border-color:var(--accent);
+color:var(--accent);
+}
+
+.scroll-indicator{
+position:absolute;
+bottom:40px;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:10px;
+color:var(--text-muted);
+font-size:12px;
+text-transform:uppercase;
+letter-spacing:2px;
+animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+0%,100%{transform:translateX(-50%) translateY(0);}
+50%{transform:translateX(-50%) translateY(-10px);}
+}
+
+/* Marquee */
+.marquee{
+background:var(--accent);
+color:#000;
+padding:15px 0;
+overflow:hidden;
+white-space:nowrap;
+position:relative;
+}
+
+.marquee-content{
+display:inline-block;
+animation:marquee 20s linear infinite;
+font-weight:800;
+text-transform:uppercase;
+letter-spacing:2px;
+font-size:14px;
+}
+
+@keyframes marquee{
+0%{transform:translateX(0);}
+100%{transform:translateX(-50%);}
+}
+
+/* Section Styles */
+section{
+padding:120px 5%;
+position:relative;
+}
+
+.section-header{
+display:flex;
+justify-content:space-between;
+align-items:end;
+margin-bottom:60px;
+flex-wrap:wrap;
+gap:20px;
+}
+
+.section-tag{
+color:var(--accent);
+font-size:12px;
+font-weight:800;
+text-transform:uppercase;
+letter-spacing:3px;
+margin-bottom:15px;
+display:block;
+}
+
+h2{
+font-size:clamp(32px,5vw,64px);
+font-weight:900;
+letter-spacing:-2px;
+line-height:1;
+text-transform:uppercase;
+}
+
+/* About Section */
+.about-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:80px;
+align-items:center;
+}
+
+.about-text{
+font-size:18px;
+color:var(--text-muted);
+line-height:1.8;
+}
+
+.about-stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:40px;
+margin-top:60px;
+}
+
+.stat h3{
+font-size:48px;
+font-weight:900;
+color:var(--accent);
+line-height:1;
+}
+
+.stat p{
+font-size:14px;
+color:var(--text-muted);
+text-transform:uppercase;
+letter-spacing:1px;
+margin-top:10px;
+}
+
+.about-image{
+position:relative;
+}
+
+.about-image img{
+width:100%;
+height:auto;
+filter:grayscale(100%) contrast(1.2);
+transition:filter 0.5s ease;
+}
+
+.about-image:hover img{
+filter:grayscale(0%) contrast(1);
+}
+
+/* Products Section */
+.products{
+background:var(--bg-soft);
+}
+
+.product-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+}
+
+.product-card{
+background:var(--bg-card);
+position:relative;
+overflow:hidden;
+cursor:pointer;
+transition:transform 0.3s ease;
+}
+
+.product-card:hover{
+transform:translateY(-10px);
+}
+
+.product-image{
+position:relative;
+overflow:hidden;
+aspect-ratio:3/4;
+background:linear-gradient(135deg,#1a1a1a 0%,#0f0f0f 100%);
+}
+
+.product-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:transform 0.6s ease;
+}
+
+.product-card:hover .product-image img{
+transform:scale(1.05);
+}
+
+.product-tag{
+position:absolute;
+top:20px;
+left:20px;
+background:var(--accent);
+color:#000;
+padding:6px 12px;
+font-size:11px;
+font-weight:800;
+text-transform:uppercase;
+letter-spacing:1px;
+z-index:2;
+}
+
+.product-tag.sold-out{
+background:var(--danger);
+color:#fff;
+}
+
+.product-info{
+padding:30px;
+}
+
+.product-name{
+font-size:20px;
+font-weight:700;
+margin-bottom:8px;
+text-transform:uppercase;
+letter-spacing:1px;
+}
+
+.product-price{
+font-size:24px;
+font-weight:900;
+color:var(--accent);
+margin-bottom:15px;
+}
+
+.product-meta{
+display:flex;
+gap:15px;
+font-size:12px;
+color:var(--text-muted);
+text-transform:uppercase;
+letter-spacing:1px;
+}
+
+.quick-add{
+position:absolute;
+bottom:30px;
+right:30px;
+width:50px;
+height:50px;
+background:var(--accent);
+border:none;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+opacity:0;
+transform:translateY(20px);
+transition:all 0.3s ease;
+}
+
+.product-card:hover .quick-add{
+opacity:1;
+transform:translateY(0);
+}
+
+/* Features Section */
+.features-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:30px;
+}
+
+.feature-card{
+background:var(--bg-card);
+padding:40px;
+border:1px solid rgba(255,255,255,0.05);
+transition:all 0.3s ease;
+position:relative;
+overflow:hidden;
+}
+
+.feature-card::before{
+content:'';
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:3px;
+background:var(--accent);
+transform:scaleX(0);
+transform-origin:left;
+transition:transform 0.3s ease;
+}
+
+.feature-card:hover::before{
+transform:scaleX(1);
+}
+
+.feature-card:hover{
+border-color:rgba(204,255,0,0.3);
+transform:translateY(-5px);
+}
+
+.feature-icon{
+font-size:40px;
+margin-bottom:20px;
+}
+
+.feature-card h3{
+font-size:18px;
+font-weight:800;
+text-transform:uppercase;
+letter-spacing:1px;
+margin-bottom:15px;
+}
+
+.feature-card p{
+font-size:14px;
+color:var(--text-muted);
+line-height:1.6;
+}
+
+/* Lookbook Section */
+.lookbook{
+padding:0;
+}
+
+.lookbook-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:2px;
+}
+
+.lookbook-item{
+position:relative;
+aspect-ratio:3/4;
+overflow:hidden;
+cursor:pointer;
+}
+
+.lookbook-item img{
+width:100%;
+height:100%;
+object-fit:cover;
+filter:grayscale(100%);
+transition:all 0.5s ease;
+}
+
+.lookbook-item:hover img{
+filter:grayscale(0%) scale(1.1);
+}
+
+.lookbook-overlay{
+position:absolute;
+bottom:0;
+left:0;
+width:100%;
+padding:40px;
+background:linear-gradient(to top,rgba(0,0,0,0.9),transparent);
+opacity:0;
+transition:opacity 0.3s ease;
+}
+
+.lookbook-item:hover .lookbook-overlay{
+opacity:1;
+}
+
+/* Size Guide */
+.size-guide{
+background:var(--bg-soft);
+}
+
+.size-table{
+width:100%;
+border-collapse:collapse;
+margin-top:40px;
+}
+
+.size-table th,
+.size-table td{
+padding:20px;
+text-align:center;
+border:1px solid rgba(255,255,255,0.1);
+font-size:14px;
+}
+
+.size-table th{
+background:rgba(204,255,0,0.1);
+color:var(--accent);
+font-weight:700;
+text-transform:uppercase;
+letter-spacing:1px;
+}
+
+.size-table td{
+color:var(--text-muted);
+}
+
+.size-note{
+margin-top:30px;
+padding:20px;
+background:var(--bg-card);
+border-left:4px solid var(--accent);
+font-size:14px;
+color:var(--text-muted);
+}
+
+/* Manifesto Section */
+.manifesto{
+background:var(--beige);
+color:#000;
+text-align:center;
+position:relative;
+overflow:hidden;
+}
+
+.manifesto::before{
+content:'';
+position:absolute;
+top:-50%;
+left:-50%;
+width:200%;
+height:200%;
+background:radial-gradient(circle,rgba(0,0,0,0.03) 1px,transparent 1px);
+background-size:20px 20px;
+pointer-events:none;
+}
+
+.manifesto h2{
+color:#000;
+margin-bottom:30px;
+}
+
+.manifesto-text{
+font-size:clamp(20px,3vw,32px);
+font-weight:300;
+line-height:1.8;
+max-width:800px;
+margin:0 auto 40px;
+color:#333;
+}
+
+.manifesto-quote{
+font-size:14px;
+text-transform:uppercase;
+letter-spacing:4px;
+font-weight:700;
+color:#666;
+}
+
+/* Newsletter */
+.newsletter{
+text-align:center;
+max-width:600px;
+margin:0 auto;
+}
+
+.newsletter-form{
+display:flex;
+gap:15px;
+margin-top:40px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.newsletter-form input{
+flex:1;
+min-width:250px;
+padding:20px 30px;
+background:var(--bg-card);
+border:1px solid rgba(255,255,255,0.1);
+color:var(--text);
+font-size:16px;
+outline:none;
+transition:border-color 0.3s ease;
+}
+
+.newsletter-form input:focus{
+border-color:var(--accent);
+}
+
+/* Cart Modal */
+.cart-modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+z-index:10000;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+.cart-content{
+background:var(--bg-soft);
+max-width:600px;
+width:100%;
+max-height:80vh;
+overflow-y:auto;
+border:1px solid rgba(255,255,255,0.1);
+position:relative;
+}
+
+.cart-header{
+padding:30px;
+border-bottom:1px solid rgba(255,255,255,0.1);
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.cart-header h2{
+font-size:24px;
+}
+
+.close-cart{
+background:none;
+border:none;
+color:var(--text);
+font-size:30px;
+cursor:pointer;
+width:40px;
+height:40px;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.cart-items{
+padding:30px;
+}
+
+.cart-item{
+display:flex;
+gap:20px;
+padding:20px 0;
+border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.cart-item-image{
+width:100px;
+height:130px;
+background:var(--bg-card);
+overflow:hidden;
+}
+
+.cart-item-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.cart-item-details{
+flex:1;
+}
+
+.cart-item-name{
+font-weight:700;
+text-transform:uppercase;
+letter-spacing:1px;
+margin-bottom:5px;
+}
+
+.cart-item-price{
+color:var(--accent);
+font-weight:900;
+font-size:18px;
+margin-bottom:10px;
+}
+
+.cart-item-size{
+font-size:12px;
+color:var(--text-muted);
+text-transform:uppercase;
+}
+
+.remove-item{
+background:none;
+border:none;
+color:var(--danger);
+cursor:pointer;
+font-size:12px;
+text-transform:uppercase;
+letter-spacing:1px;
+margin-top:10px;
+}
+
+.cart-empty{
+text-align:center;
+padding:60px 20px;
+color:var(--text-muted);
+}
+
+.cart-footer{
+padding:30px;
+border-top:1px solid rgba(255,255,255,0.1);
+}
+
+.cart-total{
+display:flex;
+justify-content:space-between;
+font-size:20px;
+font-weight:900;
+margin-bottom:30px;
+text-transform:uppercase;
+letter-spacing:1px;
+}
+
+.checkout-options{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.checkout-btn{
+width:100%;
+padding:20px;
+font-size:16px;
+font-weight:800;
+text-transform:uppercase;
+letter-spacing:2px;
+cursor:pointer;
+border:none;
+transition:all 0.3s ease;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+}
+
+.whatsapp-btn{
+background:#25D366;
+color:#fff;
+}
+
+.whatsapp-btn:hover{
+background:#128C7E;
+transform:translateY(-2px);
+}
+
+.instagram-btn{
+background:linear-gradient(45deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+color:#fff;
+}
+
+.instagram-btn:hover{
+opacity:0.9;
+transform:translateY(-2px);
+}
+
+/* Footer */
+footer{
+background:var(--bg-soft);
+padding:80px 5% 40px;
+border-top:1px solid rgba(255,255,255,0.05);
+}
+
+.footer-grid{
+display:grid;
+grid-template-columns:2fr 1fr 1fr 1fr;
+gap:60px;
+margin-bottom:60px;
+}
+
+.footer-brand h3{
+font-size:32px;
+font-weight:900;
+letter-spacing:-2px;
+margin-bottom:20px;
+}
+
+.footer-brand p{
+color:var(--text-muted);
+font-size:14px;
+line-height:1.8;
+max-width:300px;
+}
+
+.footer-links h4{
+font-size:14px;
+font-weight:800;
+text-transform:uppercase;
+letter-spacing:2px;
+margin-bottom:25px;
+color:var(--text);
+}
+
+.footer-links ul{
+list-style:none;
+}
+
+.footer-links li{
+margin-bottom:12px;
+}
+
+.footer-links a{
+color:var(--text-muted);
+text-decoration:none;
+font-size:14px;
+transition:color 0.3s ease;
+}
+
+.footer-links a:hover{
+color:var(--accent);
+}
+
+.footer-bottom{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding-top:40px;
+border-top:1px solid rgba(255,255,255,0.05);
+flex-wrap:wrap;
+gap:20px;
+}
+
+.footer-bottom p{
+color:var(--text-muted);
+font-size:13px;
+}
+
+.heart-red{
+color:#ff0000;
+}
+
+.social-links{
+display:flex;
+gap:20px;
+}
+
+.social-links a{
+width:40px;
+height:40px;
+border:1px solid rgba(255,255,255,0.1);
+display:flex;
+align-items:center;
+justify-content:center;
+color:var(--text);
+text-decoration:none;
+transition:all 0.3s ease;
+}
+
+.social-links a:hover{
+background:var(--accent);
+color:#000;
+border-color:var(--accent);
+}
+
+/* Mobile Responsive */
+@media(max-width:1024px){
+.product-grid{
+grid-template-columns:repeat(2,1fr);
+}
+.features-grid{
+grid-template-columns:repeat(2,1fr);
+}
+.lookbook-grid{
+grid-template-columns:repeat(2,1fr);
+}
+.about-grid{
+grid-template-columns:1fr;
+gap:40px;
+}
+}
+
+@media(max-width:768px){
+.nav-links{
+display:none;
+}
+.mobile-menu{
+display:flex;
+}
+section{
+padding:80px 5%;
+}
+.product-grid{
+grid-template-columns:1fr;
+}
+.features-grid{
+grid-template-columns:1fr;
+}
+.lookbook-grid{
+grid-template-columns:1fr;
+}
+.about-stats{
+grid-template-columns:1fr;
+text-align:center;
+}
+.footer-grid{
+grid-template-columns:1fr;
+gap:40px;
+}
+.cart-item{
+flex-direction:column;
+}
+.cart-item-image{
+width:100%;
+height:200px;
+}
+}
+
+/* Animations */
+.fade-in{
+opacity:0;
+transform:translateY(30px);
+transition:opacity 0.6s ease,transform 0.6s ease;
+}
+
+.fade-in.visible{
+opacity:1;
+transform:translateY(0);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar{
+width:8px;
+}
+
+::-webkit-scrollbar-track{
+background:var(--bg);
+}
+
+::-webkit-scrollbar-thumb{
+background:var(--accent);
+border-radius:0;
+}
+
+/* Selection */
+::selection{
+background:var(--accent);
+color:#000;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Preloader -->
+<div id="preloader">
+<div class="loader-text">FLEEKERS</div>
+</div>
+
+<!-- Noise Overlay -->
+<div class="noise"></div>
+
+<!-- Navigation -->
+<nav id="navbar">
+<div class="logo">FLEEKERS<span>.</span></div>
+<div class="nav-links">
+<a href="#about">About</a>
+<a href="#shop">Shop</a>
+<a href="#lookbook">Lookbook</a>
+<a href="#sizing">Sizing</a>
+<a href="#contact">Contact</a>
+</div>
+<button class="cart-btn" onclick="openCart()">Cart (<span id="cart-count">0</span>)</button>
+<div class="mobile-menu" onclick="toggleMobileMenu()">
+<span></span>
+<span></span>
+<span></span>
+</div>
+</nav>
+
+<!-- Cart Modal -->
+<div id="cart-modal" class="cart-modal" onclick="closeCartOutside(event)">
+<div class="cart-content" onclick="event.stopPropagation()">
+<div class="cart-header">
+<h2>Your Cart</h2>
+<button class="close-cart" onclick="closeCart()">&times;</button>
+</div>
+<div id="cart-items" class="cart-items">
+<div class="cart-empty">Your cart is empty</div>
+</div>
+<div id="cart-footer" class="cart-footer" style="display:none;">
+<div class="cart-total">
+<span>Total</span>
+<span id="cart-total-price">₹0</span>
+</div>
+<div class="checkout-options">
+<button class="checkout-btn whatsapp-btn" onclick="checkoutWhatsApp()">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+Order via WhatsApp
+</button>
+<button class="checkout-btn instagram-btn" onclick="checkoutInstagram()">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+Order via Instagram DM
+</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Hero Section -->
+<section class="hero">
+<div class="hero-bg"></div>
+<div class="hero-content">
+<div class="badge">Limited Drop — Only 100 Pieces</div>
+<h1>
+<span class="outline">Take Your</span>
+<span class="filled">Chance.</span>
+<span class="filled">Roll The Dice.</span>
+</h1>
+<p class="hero-subtitle">
+Drop 01 features three essential colorways in 240 GSM heavyweight cotton. 
+Oversized fit, dropped shoulders, and a matte finish that speaks without shouting.
+</p>
+<div class="hero-cta">
+<button class="btn-primary" onclick="scrollToShop()">Shop The Drop</button>
+<button class="btn-secondary" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Our Story</button>
+</div>
+</div>
+<div class="scroll-indicator">
+<span>Scroll</span>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M12 5v14M19 12l-7 7-7-7"/>
+</svg>
+</div>
+</section>
+
+<!-- Marquee -->
+<div class="marquee">
+<div class="marquee-content">
+Free Shipping on Orders Above ₹2000 • Cash on Delivery Available • Made in India • 240 GSM Heavyweight Cotton • Limited Edition Drop 01 • 
+Free Shipping on Orders Above ₹2000 • Cash on Delivery Available • Made in India • 240 GSM Heavyweight Cotton • Limited Edition Drop 01 • 
+</div>
+</div>
+
+<!-- About Section -->
+<section id="about" class="about">
+<div class="about-grid">
+<div class="about-content fade-in">
+<span class="section-tag">The Brand</span>
+<h2>Bet On<br>Yourself</h2>
+<p class="about-text">
+Fleekers was born from the belief that essentials shouldn't be basic. We create limited-run, 
+premium oversized pieces for those who take risks and back themselves. Every stitch, every gram 
+of fabric, every detail is designed to make a statement without saying too much.
+<br><br>
+This is not fast fashion. This is armor for the ones who play to win.
+</p>
+<div class="about-stats">
+<div class="stat">
+<h3>240</h3>
+<p>GSM Cotton</p>
+</div>
+<div class="stat">
+<h3>100</h3>
+<p>Pieces Only</p>
+</div>
+<div class="stat">
+<h3>01</h3>
+<p>First Drop</p>
+</div>
+</div>
+</div>
+<div class="about-image fade-in">
+<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80" alt="Fleekers Streetwear">
+</div>
+</div>
+</section>
+
+<!-- Products Section -->
+<section id="shop" class="products">
+<div class="section-header fade-in">
+<div>
+<span class="section-tag">The Collection</span>
+<h2>Drop 01</h2>
+</div>
+<p style="color:var(--text-muted);max-width:400px;">Three essential colorways. One chance to cop. Once they're gone, they're gone forever.</p>
+</div>
+
+<div class="product-grid">
+<div class="product-card fade-in" onclick="addToCart('Midnight Black', 699, 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&q=80')">
+<div class="product-image">
+<img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&q=80" alt="Midnight Black Tee">
+<span class="product-tag">Best Seller</span>
+</div>
+<div class="product-info">
+<h3 class="product-name">Midnight Black</h3>
+<div class="product-price">₹699</div>
+<div class="product-meta">
+<span>240 GSM</span>
+<span>•</span>
+<span>Oversized</span>
+</div>
+<button class="quick-add" onclick="event.stopPropagation();addToCart('Midnight Black', 699, 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&q=80')">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+<path d="M12 5v14M5 12h14"/>
+</svg>
+</button>
+</div>
+</div>
+
+<div class="product-card fade-in" onclick="addToCart('Desert Sand', 699, 'https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=600&q=80')">
+<div class="product-image">
+<img src="https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=600&q=80" alt="Desert Sand Tee">
+</div>
+<div class="product-info">
+<h3 class="product-name">Desert Sand</h3>
+<div class="product-price">₹699</div>
+<div class="product-meta">
+<span>240 GSM</span>
+<span>•</span>
+<span>Oversized</span>
+</div>
+<button class="quick-add" onclick="event.stopPropagation();addToCart('Desert Sand', 699, 'https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=600&q=80')">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+<path d="M12 5v14M5 12h14"/>
+</svg>
+</button>
+</div>
+</div>
+
+<div class="product-card fade-in" onclick="addToCart('Ghost White', 699, 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80')">
+<div class="product-image">
+<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80" alt="Ghost White Tee">
+<span class="product-tag sold-out">Low Stock</span>
+</div>
+<div class="product-info">
+<h3 class="product-name">Ghost White</h3>
+<div class="product-price">₹699</div>
+<div class="product-meta">
+<span>240 GSM</span>
+<span>•</span>
+<span>Oversized</span>
+</div>
+<button class="quick-add" onclick="event.stopPropagation();addToCart('Ghost White', 699, 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80')">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+<path d="M12 5v14M5 12h14"/>
+</svg>
+</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+<div class="section-header fade-in" style="text-align:center;justify-content:center;">
+<div>
+<span class="section-tag">Quality</span>
+<h2>Built Different</h2>
+</div>
+</div>
+<div class="features-grid">
+<div class="feature-card fade-in">
+<div class="feature-icon">⚡</div>
+<h3>240 GSM</h3>
+<p>Heavyweight ring-spun cotton that holds its shape and gets better with every wash. No thin, see-through fabric here.</p>
+</div>
+<div class="feature-card fade-in">
+<div class="feature-icon">📐</div>
+<h3>Oversized Fit</h3>
+<p>Dropped shoulders, relaxed silhouette, and extra length. Designed to drape perfectly whether you're 5'6" or 6'2".</p>
+</div>
+<div class="feature-card fade-in">
+<div class="feature-icon">🎨</div>
+<h3>Matte Print</h3>
+<p>Our signature dice graphic uses high-density matte ink. Clean finish, zero shine, maximum impact.</p>
+</div>
+<div class="feature-card fade-in">
+<div class="feature-icon">🔒</div>
+<h3>Limited Run</h3>
+<p>Only 100 pieces per colorway. Each tee is numbered. Once Drop 01 sells out, it becomes archive-only.</p>
+</div>
+</div>
+</section>
+
+<!-- Lookbook Section -->
+<section id="lookbook" class="lookbook">
+<div class="section-header fade-in" style="padding:0 5%;margin-bottom:40px;">
+<div>
+<span class="section-tag">Visuals</span>
+<h2>Lookbook</h2>
+</div>
+</div>
+<div class="lookbook-grid">
+<div class="lookbook-item">
+<img src="https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=600&q=80" alt="Look 1">
+<div class="lookbook-overlay">
+<p style="font-weight:700;text-transform:uppercase;letter-spacing:2px;">Street</p>
+</div>
+</div>
+<div class="lookbook-item">
+<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80" alt="Look 2">
+<div class="lookbook-overlay">
+<p style="font-weight:700;text-transform:uppercase;letter-spacing:2px;">Essential</p>
+</div>
+</div>
+<div class="lookbook-item">
+<img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=600&q=80" alt="Look 3">
+<div class="lookbook-overlay">
+<p style="font-weight:700;text-transform:uppercase;letter-spacing:2px;">Urban</p>
+</div>
+</div>
+<div class="lookbook-item">
+<img src="https://images.unsplash.com/photo-1499971856191-1a420a42b498?w=600&q=80" alt="Look 4">
+<div class="lookbook-overlay">
+<p style="font-weight:700;text-transform:uppercase;letter-spacing:2px;">Raw</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Size Guide -->
+<section id="sizing" class="size-guide">
+<div class="section-header fade-in" style="text-align:center;justify-content:center;">
+<div>
+<span class="section-tag">Fit Guide</span>
+<h2>Size Chart</h2>
+</div>
+</div>
+
+<div style="max-width:900px;margin:0 auto;">
+<table class="size-table fade-in">
+<thead>
+<tr>
+<th>Size</th>
+<th>Chest (in)</th>
+<th>Length (in)</th>
+<th>Shoulder (in)</th>
+<th>Fit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="color:var(--text);font-weight:700;">S</td>
+<td>42"</td>
+<td>28"</td>
+<td>21"</td>
+<td>Relaxed</td>
+</tr>
+<tr>
+<td style="color:var(--text);font-weight:700;">M</td>
+<td>44"</td>
+<td>29"</td>
+<td>22"</td>
+<td>Oversized</td>
+</tr>
+<tr>
+<td style="color:var(--text);font-weight:700;">L</td>
+<td>46"</td>
+<td>30"</td>
+<td>23"</td>
+<td>Oversized</td>
+</tr>
+<tr>
+<td style="color:var(--text);font-weight:700;">XL</td>
+<td>48"</td>
+<td>31"</td>
+<td>24"</td>
+<td>Boxy</td>
+</tr>
+<tr>
+<td style="color:var(--text);font-weight:700;">XXL</td>
+<td>50"</td>
+<td>32"</td>
+<td>25"</td>
+<td>Boxy</td>
+</tr>
+</tbody>
+</table>
+
+<div class="size-note fade-in">
+<strong>Pro Tip:</strong> If you're between sizes, size down for a relaxed fit or stay true to size for the full oversized look. Model is 6'0" wearing size L.
+</div>
+</div>
+</section>
+
+<!-- Manifesto Section -->
+<section class="manifesto">
+<div class="fade-in">
+<p class="manifesto-quote">The Manifesto</p>
+<h2>This Is Not Just<br>A Graphic Tee</h2>
+<p class="manifesto-text">
+It's a reminder to take your shot. To roll the dice on yourself. To bet big when everyone else plays it safe. 
+Every time you put it on, remember: fortune favors the bold.
+</p>
+<button class="btn-primary" onclick="scrollToShop()">Cop Now</button>
+</div>
+</section>
+
+<!-- Newsletter -->
+<section id="contact">
+<div class="newsletter fade-in">
+<span class="section-tag">Stay Updated</span>
+<h2>Join The Inner Circle</h2>
+<p style="color:var(--text-muted);margin-top:20px;">Be the first to know about Drop 02, exclusive releases, and member-only discounts.</p>
+
+<form class="newsletter-form" onsubmit="handleSubscribe(event)">
+<input type="email" placeholder="Enter your email" required>
+<button type="submit" class="btn-primary">Subscribe</button>
+</form>
+
+<p style="margin-top:20px;font-size:12px;color:var(--text-muted);">No spam. Unsubscribe anytime.</p>
+</div>
+</section>
+
+<!-- Footer -->
+<footer>
+<div class="footer-grid">
+<div class="footer-brand">
+<h3>FLEEKERS.</h3>
+<p>Essential streetwear for those who bet on themselves. Made in India, worn worldwide.</p>
+</div>
+<div class="footer-links">
+<h4>Shop</h4>
+<ul>
+<li><a href="#shop">Drop 01</a></li>
+<li><a href="#">Archive</a></li>
+<li><a href="#sizing">Size Guide</a></li>
+<li><a href="#">Shipping</a></li>
+</ul>
+</div>
+<div class="footer-links">
+<h4>Company</h4>
+<ul>
+<li><a href="#about">About Us</a></li>
+<li><a href="#lookbook">Lookbook</a></li>
+<li><a href="#">Stockists</a></li>
+<li><a href="#">Careers</a></li>
+</ul>
+</div>
+<div class="footer-links">
+<h4>Support</h4>
+<ul>
+<li><a href="#">FAQ</a></li>
+<li><a href="#">Returns</a></li>
+<li><a href="mailto:hello@fleekers.in">Contact</a></li>
+<li><a href="#">Privacy Policy</a></li>
+</ul>
+</div>
+</div>
+
+<div class="footer-bottom">
+<p>© 2026 Fleekers. All rights reserved. Built with <span class="heart-red">❤</span> in India.</p>
+<div class="social-links">
+<a href="https://www.instagram.com/fleekers.in" target="_blank" aria-label="Instagram">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+</a>
+</div>
+</div>
+</footer>
+
+<script>
+// Cart functionality
+let cart = [];
+
+function addToCart(name, price, image) {
+const existingItem = cart.find(item => item.name === name);
+if (existingItem) {
+existingItem.quantity += 1;
+} else {
+cart.push({
+name: name,
+price: price,
+image: image,
+quantity: 1,
+size: 'M'
+});
+}
+updateCartUI();
+openCart();
+}
+
+function removeFromCart(index) {
+cart.splice(index, 1);
+updateCartUI();
+}
+
+function updateCartUI() {
+const cartCount = document.getElementById('cart-count');
+const cartItems = document.getElementById('cart-items');
+const cartFooter = document.getElementById('cart-footer');
+const cartTotalPrice = document.getElementById('cart-total-price');
+
+const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+cartCount.textContent = totalItems;
+
+if (cart.length === 0) {
+cartItems.innerHTML = '<div class="cart-empty">Your cart is empty</div>';
+cartFooter.style.display = 'none';
+} else {
+let html = '';
+let total = 0;
+cart.forEach((item, index) => {
+total += item.price * item.quantity;
+html += `
+<div class="cart-item">
+<div class="cart-item-image">
+<img src="${item.image}" alt="${item.name}">
+</div>
+<div class="cart-item-details">
+<div class="cart-item-name">${item.name}</div>
+<div class="cart-item-price">₹${item.price}</div>
+<div class="cart-item-size">Qty: ${item.quantity} | Size: ${item.size}</div>
+<button class="remove-item" onclick="removeFromCart(${index})">Remove</button>
+</div>
+</div>
+`;
+});
+cartItems.innerHTML = html;
+cartTotalPrice.textContent = `₹${total}`;
+cartFooter.style.display = 'block';
+}
+}
+
+function openCart() {
+document.getElementById('cart-modal').style.display = 'flex';
+document.body.style.overflow = 'hidden';
+}
+
+function closeCart() {
+document.getElementById('cart-modal').style.display = 'none';
+document.body.style.overflow = 'auto';
+}
+
+function closeCartOutside(event) {
+if (event.target === document.getElementById('cart-modal')) {
+closeCart();
+}
+}
+
+function checkoutWhatsApp() {
+if (cart.length === 0) return;
+let message = "Hey Fleekers! I want to order:\n\n";
+let total = 0;
+cart.forEach(item => {
+message += `• ${item.name} - Size ${item.size} x${item.quantity} - ₹${item.price * item.quantity}\n`;
+total += item.price * item.quantity;
+});
+message += `\nTotal: ₹${total}\n\nPlease confirm availability.`;
+const url = `https://wa.me/918496959376?text=${encodeURIComponent(message)}`;
+window.open(url, '_blank');
+}
+
+function checkoutInstagram() {
+if (cart.length === 0) return;
+let message = "Hey Fleekers! I want to order:\n\n";
+let total = 0;
+cart.forEach(item => {
+message += `• ${item.name} - Size ${item.size} x${item.quantity} - ₹${item.price * item.quantity}\n`;
+total += item.price * item.quantity;
+});
+message += `\nTotal: ₹${total}`;
+const url = `https://www.instagram.com/fleekers.in`;
+window.open(url, '_blank');
+alert("Please DM us on Instagram with your order:\n\n" + message);
+}
+
+// Preloader
+window.addEventListener('load',()=>{
+setTimeout(()=>{
+document.getElementById('preloader').style.opacity='0';
+setTimeout(()=>{
+document.getElementById('preloader').style.display='none';
+},500);
+},1500);
+});
+
+// Navbar scroll effect
+window.addEventListener('scroll',()=>{
+const nav=document.getElementById('navbar');
+if(window.scrollY>50){
+nav.classList.add('scrolled');
+}else{
+nav.classList.remove('scrolled');
+}
+});
+
+// Scroll to shop
+function scrollToShop(){
+document.getElementById('shop').scrollIntoView({behavior:'smooth'});
+}
+
+// Handle newsletter
+function handleSubscribe(e){
+e.preventDefault();
+const email=e.target.querySelector('input').value;
+alert(`Thanks for subscribing! We'll keep you updated on Drop 02 at ${email}`);
+e.target.reset();
+}
+
+// Mobile menu toggle
+function toggleMobileMenu(){
+const nav=document.querySelector('.nav-links');
+nav.style.display=nav.style.display==='flex'?'none':'flex';
+nav.style.position='absolute';
+nav.style.top='100%';
+nav.style.left='0';
+nav.style.width='100%';
+nav.style.background='var(--bg)';
+nav.style.flexDirection='column';
+nav.style.padding='20px';
+}
+
+// Intersection Observer for fade-in animations
+const observerOptions={
+threshold:0.1,
+rootMargin:'0px 0px -50px 0px'
+};
+
+const observer=new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add('visible');
+}
+});
+},observerOptions);
+
+document.querySelectorAll('.fade-in').forEach(el=>{
+observer.observe(el);
+});
+
+// Parallax effect for hero
+window.addEventListener('scroll',()=>{
+const scrolled=window.pageYOffset;
+const heroBg=document.querySelector('.hero-bg');
+if(heroBg){
+heroBg.style.transform=`translateY(${scrolled*0.5}px)`;
+}
+});
+</script>
+
+</body>
+</html>
