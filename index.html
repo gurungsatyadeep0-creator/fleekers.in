@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FLEEKERS — DROP 01 | Essential Streetwear</title>
-<meta name="description" content="Fleekers Drop 01 - Limited heavyweight oversized tees. 240 GSM premium cotton. Bet on yourself.">
+<meta name="description" content="Fleekers Drop 01 - Limited heavyweight tees. 240 GSM premium cotton. Bet on yourself.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
@@ -388,55 +388,70 @@ line-height:1;
 text-transform:uppercase;
 }
 
-/* About Section */
-.about-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:80px;
-align-items:center;
+/* Brand Philosophy Section - Dark Theme */
+.philosophy{
+background:var(--bg);
+color:var(--text);
+text-align:center;
+padding:140px 5%;
+border-top:1px solid rgba(255,255,255,0.05);
+border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
-.about-text{
-font-size:18px;
-color:var(--text-muted);
-line-height:1.8;
+.philosophy-content{
+max-width:900px;
+margin:0 auto;
 }
 
-.about-stats{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:40px;
-margin-top:60px;
+.philosophy h2{
+color:var(--text);
+margin-bottom:100px;
+font-size:clamp(36px,6vw,72px);
 }
 
-.stat h3{
+.philosophy-block{
+margin-bottom:100px;
+}
+
+.philosophy-block:last-child{
+margin-bottom:0;
+}
+
+.philosophy-icon{
 font-size:48px;
-font-weight:900;
-color:var(--accent);
-line-height:1;
+margin-bottom:30px;
+display:block;
 }
 
-.stat p{
+.philosophy h3{
 font-size:14px;
-color:var(--text-muted);
+font-weight:800;
 text-transform:uppercase;
-letter-spacing:1px;
-margin-top:10px;
+letter-spacing:4px;
+color:var(--accent);
+margin-bottom:30px;
 }
 
-.about-image{
-position:relative;
+.philosophy p{
+font-size:clamp(18px,2.5vw,24px);
+line-height:2.2;
+color:var(--text-muted);
+font-weight:400;
+max-width:800px;
+margin:0 auto;
 }
 
-.about-image img{
-width:100%;
-height:auto;
-filter:grayscale(100%) contrast(1.2);
-transition:filter 0.5s ease;
+.philosophy .highlight{
+color:var(--text);
+font-weight:600;
 }
 
-.about-image:hover img{
-filter:grayscale(0%) contrast(1);
+.philosophy-divider{
+width:60px;
+height:1px;
+background:var(--text-muted);
+margin:80px auto;
+opacity:0.2;
 }
 
 /* Products Section */
@@ -525,6 +540,32 @@ font-size:12px;
 color:var(--text-muted);
 text-transform:uppercase;
 letter-spacing:1px;
+}
+
+.size-selector{
+display:flex;
+gap:8px;
+margin:15px 0;
+justify-content:flex-start;
+}
+
+.size-selector button{
+width:36px;
+height:36px;
+border:1px solid rgba(255,255,255,0.2);
+background:transparent;
+color:var(--text-muted);
+font-size:12px;
+font-weight:700;
+cursor:pointer;
+transition:all 0.3s ease;
+}
+
+.size-selector button:hover,
+.size-selector button.active{
+background:var(--accent);
+color:#000;
+border-color:var(--accent);
 }
 
 .quick-add{
@@ -766,6 +807,21 @@ transition:border-color 0.3s ease;
 border-color:var(--accent);
 }
 
+.newsletter-message{
+margin-top:20px;
+font-size:14px;
+font-weight:600;
+min-height:20px;
+}
+
+.newsletter-message.success{
+color:var(--accent);
+}
+
+.newsletter-message.error{
+color:var(--danger);
+}
+
 /* Cart Modal */
 .cart-modal{
 display:none;
@@ -825,6 +881,7 @@ display:flex;
 gap:20px;
 padding:20px 0;
 border-bottom:1px solid rgba(255,255,255,0.05);
+align-items:center;
 }
 
 .cart-item-image{
@@ -832,6 +889,7 @@ width:100px;
 height:130px;
 background:var(--bg-card);
 overflow:hidden;
+flex-shrink:0;
 }
 
 .cart-item-image img{
@@ -862,6 +920,40 @@ margin-bottom:10px;
 font-size:12px;
 color:var(--text-muted);
 text-transform:uppercase;
+margin-bottom:10px;
+}
+
+.qty-control{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.qty-control button{
+width:28px;
+height:28px;
+background:var(--bg-card);
+border:1px solid rgba(255,255,255,0.2);
+color:var(--text);
+font-size:16px;
+cursor:pointer;
+transition:all 0.3s ease;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.qty-control button:hover{
+background:var(--accent);
+color:#000;
+border-color:var(--accent);
+}
+
+.qty-control span{
+font-size:14px;
+font-weight:700;
+min-width:20px;
+text-align:center;
 }
 
 .remove-item{
@@ -936,6 +1028,62 @@ color:#fff;
 .instagram-btn:hover{
 opacity:0.9;
 transform:translateY(-2px);
+}
+
+.customer-form{
+margin-bottom:30px;
+padding:20px;
+background:var(--bg-card);
+border:1px solid rgba(255,255,255,0.1);
+}
+
+.customer-form h3{
+font-size:14px;
+font-weight:800;
+text-transform:uppercase;
+letter-spacing:2px;
+margin-bottom:20px;
+color:var(--text);
+}
+
+.form-group{
+margin-bottom:15px;
+}
+
+.form-group input{
+width:100%;
+padding:12px 16px;
+background:var(--bg-soft);
+border:1px solid rgba(255,255,255,0.1);
+color:var(--text);
+font-size:14px;
+outline:none;
+transition:border-color 0.3s ease;
+}
+
+.form-group input:focus{
+border-color:var(--accent);
+}
+
+.form-group input::placeholder{
+color:var(--text-muted);
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+z-index:999;
+backdrop-filter:blur(5px);
+}
+
+.mobile-menu-overlay.active{
+display:block;
 }
 
 /* Footer */
@@ -1036,6 +1184,29 @@ color:#000;
 border-color:var(--accent);
 }
 
+/* Toast Notification */
+.toast{
+position:fixed;
+bottom:30px;
+left:50%;
+transform:translateX(-50%) translateY(100px);
+background:var(--accent);
+color:#000;
+padding:16px 32px;
+font-weight:700;
+font-size:14px;
+text-transform:uppercase;
+letter-spacing:1px;
+z-index:10001;
+opacity:0;
+transition:all 0.3s ease;
+}
+
+.toast.show{
+transform:translateX(-50%) translateY(0);
+opacity:1;
+}
+
 /* Mobile Responsive */
 @media(max-width:1024px){
 .product-grid{
@@ -1047,15 +1218,30 @@ grid-template-columns:repeat(2,1fr);
 .lookbook-grid{
 grid-template-columns:repeat(2,1fr);
 }
-.about-grid{
-grid-template-columns:1fr;
-gap:40px;
+.philosophy h2{
+margin-bottom:60px;
+}
+.philosophy-block{
+margin-bottom:60px;
 }
 }
 
 @media(max-width:768px){
 .nav-links{
 display:none;
+position:fixed;
+top:70px;
+left:0;
+width:100%;
+background:var(--bg);
+flex-direction:column;
+padding:30px;
+gap:20px;
+border-bottom:1px solid rgba(255,255,255,0.1);
+z-index:1000;
+}
+.nav-links.active{
+display:flex;
 }
 .mobile-menu{
 display:flex;
@@ -1072,20 +1258,23 @@ grid-template-columns:1fr;
 .lookbook-grid{
 grid-template-columns:1fr;
 }
-.about-stats{
-grid-template-columns:1fr;
-text-align:center;
-}
 .footer-grid{
 grid-template-columns:1fr;
 gap:40px;
 }
 .cart-item{
 flex-direction:column;
+align-items:flex-start;
 }
 .cart-item-image{
 width:100%;
 height:200px;
+}
+.philosophy{
+padding:100px 5%;
+}
+.philosophy-block{
+margin-bottom:50px;
 }
 }
 
@@ -1133,15 +1322,18 @@ color:#000;
 <!-- Noise Overlay -->
 <div class="noise"></div>
 
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu-overlay" onclick="closeMobileMenu()"></div>
+
 <!-- Navigation -->
 <nav id="navbar">
 <div class="logo">FLEEKERS<span>.</span></div>
-<div class="nav-links">
-<a href="#about">About</a>
-<a href="#shop">Shop</a>
-<a href="#lookbook">Lookbook</a>
-<a href="#sizing">Sizing</a>
-<a href="#contact">Contact</a>
+<div class="nav-links" id="navLinks">
+<a href="#about" onclick="closeMobileMenu()">About</a>
+<a href="#shop" onclick="closeMobileMenu()">Shop</a>
+<a href="#lookbook" onclick="closeMobileMenu()">Lookbook</a>
+<a href="#sizing" onclick="closeMobileMenu()">Sizing</a>
+<a href="#contact" onclick="closeMobileMenu()">Contact</a>
 </div>
 <button class="cart-btn" onclick="openCart()">Cart (<span id="cart-count">0</span>)</button>
 <div class="mobile-menu" onclick="toggleMobileMenu()">
@@ -1156,12 +1348,24 @@ color:#000;
 <div class="cart-content" onclick="event.stopPropagation()">
 <div class="cart-header">
 <h2>Your Cart</h2>
-<button class="close-cart" onclick="closeCart()">&times;</button>
+<button class="close-cart" onclick="closeCart()" aria-label="Close cart">&times;</button>
 </div>
 <div id="cart-items" class="cart-items">
 <div class="cart-empty">Your cart is empty</div>
 </div>
 <div id="cart-footer" class="cart-footer" style="display:none;">
+<div class="customer-form">
+<h3>Delivery Details</h3>
+<div class="form-group">
+<input type="text" id="customer-name" placeholder="Full Name" required>
+</div>
+<div class="form-group">
+<input type="tel" id="customer-phone" placeholder="Phone Number" required>
+</div>
+<div class="form-group">
+<input type="text" id="customer-address" placeholder="Delivery Address" required>
+</div>
+</div>
 <div class="cart-total">
 <span>Total</span>
 <span id="cart-total-price">₹0</span>
@@ -1192,7 +1396,7 @@ Order via Instagram DM
 </h1>
 <p class="hero-subtitle">
 Drop 01 features three essential colorways in 240 GSM heavyweight cotton. 
-Oversized fit, dropped shoulders, and a matte finish that speaks without shouting.
+Premium fit, quality fabrics, and a matte finish that speaks without shouting.
 </p>
 <div class="hero-cta">
 <button class="btn-primary" onclick="scrollToShop()">Shop The Drop</button>
@@ -1215,36 +1419,84 @@ Free Shipping on Orders Above ₹2000 • Cash on Delivery Available • Made in
 </div>
 </div>
 
-<!-- About Section -->
-<section id="about" class="about">
-<div class="about-grid">
-<div class="about-content fade-in">
-<span class="section-tag">The Brand</span>
-<h2>Bet On<br>Yourself</h2>
-<p class="about-text">
-Fleekers was born from the belief that essentials shouldn't be basic. We create limited-run, 
-premium oversized pieces for those who take risks and back themselves. Every stitch, every gram 
-of fabric, every detail is designed to make a statement without saying too much.
+<!-- Brand Philosophy Section (About) -->
+<section id="about" class="philosophy">
+<div class="philosophy-content fade-in">
+<h2>Brand Philosophy</h2>
+
+<div class="philosophy-block">
+<span class="philosophy-icon">🚀</span>
+<h3>Our Mission</h3>
+<p>
+Fleekers exists to remind a generation that <span class="highlight">playing safe is overrated</span>.
 <br><br>
-This is not fast fashion. This is armor for the ones who play to win.
+We design streetwear for the risk-takers.<br>
+For the ones who try.<br>
+For the ones who miss.<br>
+And try again.
+<br><br>
+This isn't just t-shirts.<br>
+It's <span class="highlight">attitude you can wear</span>.
+<br><br>
+We don't follow trends.<br>
+We move when we feel like it.
+<br><br>
+<span class="highlight">Bet on yourself. Every time.</span>
 </p>
-<div class="about-stats">
-<div class="stat">
-<h3>240</h3>
-<p>GSM Cotton</p>
 </div>
-<div class="stat">
-<h3>100</h3>
-<p>Pieces Only</p>
+
+<div class="philosophy-divider"></div>
+
+<div class="philosophy-block">
+<span class="philosophy-icon">⚡</span>
+<h3>Our Vision</h3>
+<p>
+To build a streetwear movement owned by <span class="highlight">Gen Z</span>.
+<br><br>
+Not fast fashion.<br>
+Not mass production.<br>
+Not "inspired by".
+<br><br>
+<span class="highlight">Original drops.</span><br>
+<span class="highlight">Limited quantities.</span><br>
+<span class="highlight">No restocks.</span>
+<br><br>
+We see Fleekers becoming a culture brand —<br>
+from tees…<br>
+to hoodies…<br>
+to campuses…<br>
+to streets across India.
+<br><br>
+A label that feels personal.<br>
+A brand that feels like <span class="highlight">yours</span>.
+</p>
 </div>
-<div class="stat">
-<h3>01</h3>
-<p>First Drop</p>
-</div>
-</div>
-</div>
-<div class="about-image fade-in">
-<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80" alt="Fleekers Streetwear">
+
+<div class="philosophy-divider"></div>
+
+<div class="philosophy-block">
+<span class="philosophy-icon">🖤</span>
+<h3>About Fleekers</h3>
+<p>
+Fleekers was built for the <span class="highlight">bold</span>.
+<br><br>
+Started as a small idea with big energy —<br>
+we create limited streetwear drops that speak confidence.
+<br><br>
+Premium fabrics.<br>
+Strong silhouettes.<br>
+Minimal design.<br>
+Maximum presence.
+<br><br>
+Every drop is intentional.<br>
+Every piece carries a message.
+<br><br>
+If you're waiting for the "right time,"<br>
+this isn't for you.
+<br><br>
+If you're ready to take your chance —<br>
+<span class="highlight">welcome</span>.
+</p>
 </div>
 </div>
 </section>
@@ -1260,9 +1512,9 @@ This is not fast fashion. This is armor for the ones who play to win.
 </div>
 
 <div class="product-grid">
-<div class="product-card fade-in" onclick="addToCart('Midnight Black', 699, 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&q=80')">
+<div class="product-card fade-in" data-product-id="1">
 <div class="product-image">
-<img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&q=80" alt="Midnight Black Tee">
+<img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&q=80" alt="Midnight Black Tee" loading="lazy" onerror="this.src='https://via.placeholder.com/600x800/161616/ffffff?text=Midnight+Black'">
 <span class="product-tag">Best Seller</span>
 </div>
 <div class="product-info">
@@ -1271,9 +1523,16 @@ This is not fast fashion. This is armor for the ones who play to win.
 <div class="product-meta">
 <span>240 GSM</span>
 <span>•</span>
-<span>Oversized</span>
+<span>Premium Fit</span>
 </div>
-<button class="quick-add" onclick="event.stopPropagation();addToCart('Midnight Black', 699, 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&q=80')">
+<div class="size-selector">
+<button onclick="selectSize(1, 'S', this)" aria-label="Size S">S</button>
+<button onclick="selectSize(1, 'M', this)" class="active" aria-label="Size M">M</button>
+<button onclick="selectSize(1, 'L', this)" aria-label="Size L">L</button>
+<button onclick="selectSize(1, 'XL', this)" aria-label="Size XL">XL</button>
+<button onclick="selectSize(1, 'XXL', this)" aria-label="Size XXL">XXL</button>
+</div>
+<button class="quick-add" onclick="event.stopPropagation();addToCart('Midnight Black', 699, 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&q=80', 1)" aria-label="Add to cart">
 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
 <path d="M12 5v14M5 12h14"/>
 </svg>
@@ -1281,9 +1540,9 @@ This is not fast fashion. This is armor for the ones who play to win.
 </div>
 </div>
 
-<div class="product-card fade-in" onclick="addToCart('Desert Sand', 699, 'https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=600&q=80')">
+<div class="product-card fade-in" data-product-id="2">
 <div class="product-image">
-<img src="https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=600&q=80" alt="Desert Sand Tee">
+<img src="https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=600&q=80" alt="Desert Sand Tee" loading="lazy" onerror="this.src='https://via.placeholder.com/600x800/161616/ffffff?text=Desert+Sand'">
 </div>
 <div class="product-info">
 <h3 class="product-name">Desert Sand</h3>
@@ -1291,9 +1550,16 @@ This is not fast fashion. This is armor for the ones who play to win.
 <div class="product-meta">
 <span>240 GSM</span>
 <span>•</span>
-<span>Oversized</span>
+<span>Premium Fit</span>
 </div>
-<button class="quick-add" onclick="event.stopPropagation();addToCart('Desert Sand', 699, 'https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=600&q=80')">
+<div class="size-selector">
+<button onclick="selectSize(2, 'S', this)" aria-label="Size S">S</button>
+<button onclick="selectSize(2, 'M', this)" class="active" aria-label="Size M">M</button>
+<button onclick="selectSize(2, 'L', this)" aria-label="Size L">L</button>
+<button onclick="selectSize(2, 'XL', this)" aria-label="Size XL">XL</button>
+<button onclick="selectSize(2, 'XXL', this)" aria-label="Size XXL">XXL</button>
+</div>
+<button class="quick-add" onclick="event.stopPropagation();addToCart('Desert Sand', 699, 'https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=600&q=80', 2)" aria-label="Add to cart">
 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
 <path d="M12 5v14M5 12h14"/>
 </svg>
@@ -1301,9 +1567,9 @@ This is not fast fashion. This is armor for the ones who play to win.
 </div>
 </div>
 
-<div class="product-card fade-in" onclick="addToCart('Ghost White', 699, 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80')">
+<div class="product-card fade-in" data-product-id="3">
 <div class="product-image">
-<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80" alt="Ghost White Tee">
+<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80" alt="Ghost White Tee" loading="lazy" onerror="this.src='https://via.placeholder.com/600x800/161616/ffffff?text=Ghost+White'">
 <span class="product-tag sold-out">Low Stock</span>
 </div>
 <div class="product-info">
@@ -1312,9 +1578,16 @@ This is not fast fashion. This is armor for the ones who play to win.
 <div class="product-meta">
 <span>240 GSM</span>
 <span>•</span>
-<span>Oversized</span>
+<span>Premium Fit</span>
 </div>
-<button class="quick-add" onclick="event.stopPropagation();addToCart('Ghost White', 699, 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80')">
+<div class="size-selector">
+<button onclick="selectSize(3, 'S', this)" aria-label="Size S">S</button>
+<button onclick="selectSize(3, 'M', this)" class="active" aria-label="Size M">M</button>
+<button onclick="selectSize(3, 'L', this)" aria-label="Size L">L</button>
+<button onclick="selectSize(3, 'XL', this)" aria-label="Size XL">XL</button>
+<button onclick="selectSize(3, 'XXL', this)" aria-label="Size XXL">XXL</button>
+</div>
+<button class="quick-add" onclick="event.stopPropagation();addToCart('Ghost White', 699, 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80', 3)" aria-label="Add to cart">
 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
 <path d="M12 5v14M5 12h14"/>
 </svg>
@@ -1340,8 +1613,8 @@ This is not fast fashion. This is armor for the ones who play to win.
 </div>
 <div class="feature-card fade-in">
 <div class="feature-icon">📐</div>
-<h3>Oversized Fit</h3>
-<p>Dropped shoulders, relaxed silhouette, and extra length. Designed to drape perfectly whether you're 5'6" or 6'2".</p>
+<h3>Premium Fit</h3>
+<p>Carefully tailored silhouette with attention to proportions. Designed to look great whether you prefer regular or relaxed styling.</p>
 </div>
 <div class="feature-card fade-in">
 <div class="feature-icon">🎨</div>
@@ -1366,25 +1639,25 @@ This is not fast fashion. This is armor for the ones who play to win.
 </div>
 <div class="lookbook-grid">
 <div class="lookbook-item">
-<img src="https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=600&q=80" alt="Look 1">
+<img src="https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=600&q=80" alt="Look 1" loading="lazy" onerror="this.src='https://via.placeholder.com/600x800/161616/ffffff?text=Look+1'">
 <div class="lookbook-overlay">
 <p style="font-weight:700;text-transform:uppercase;letter-spacing:2px;">Street</p>
 </div>
 </div>
 <div class="lookbook-item">
-<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80" alt="Look 2">
+<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80" alt="Look 2" loading="lazy" onerror="this.src='https://via.placeholder.com/600x800/161616/ffffff?text=Look+2'">
 <div class="lookbook-overlay">
 <p style="font-weight:700;text-transform:uppercase;letter-spacing:2px;">Essential</p>
 </div>
 </div>
 <div class="lookbook-item">
-<img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=600&q=80" alt="Look 3">
+<img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=600&q=80" alt="Look 3" loading="lazy" onerror="this.src='https://via.placeholder.com/600x800/161616/ffffff?text=Look+3'">
 <div class="lookbook-overlay">
 <p style="font-weight:700;text-transform:uppercase;letter-spacing:2px;">Urban</p>
 </div>
 </div>
 <div class="lookbook-item">
-<img src="https://images.unsplash.com/photo-1499971856191-1a420a42b498?w=600&q=80" alt="Look 4">
+<img src="https://images.unsplash.com/photo-1499971856191-1a420a42b498?w=600&q=80" alt="Look 4" loading="lazy" onerror="this.src='https://via.placeholder.com/600x800/161616/ffffff?text=Look+4'">
 <div class="lookbook-overlay">
 <p style="font-weight:700;text-transform:uppercase;letter-spacing:2px;">Raw</p>
 </div>
@@ -1415,44 +1688,44 @@ This is not fast fashion. This is armor for the ones who play to win.
 <tbody>
 <tr>
 <td style="color:var(--text);font-weight:700;">S</td>
-<td>42"</td>
-<td>28"</td>
-<td>21"</td>
-<td>Relaxed</td>
+<td>38"</td>
+<td>26"</td>
+<td>17"</td>
+<td>Regular</td>
 </tr>
 <tr>
 <td style="color:var(--text);font-weight:700;">M</td>
-<td>44"</td>
-<td>29"</td>
-<td>22"</td>
-<td>Oversized</td>
+<td>40"</td>
+<td>27"</td>
+<td>18"</td>
+<td>Regular</td>
 </tr>
 <tr>
 <td style="color:var(--text);font-weight:700;">L</td>
-<td>46"</td>
-<td>30"</td>
-<td>23"</td>
-<td>Oversized</td>
+<td>42"</td>
+<td>28"</td>
+<td>19"</td>
+<td>Relaxed</td>
 </tr>
 <tr>
 <td style="color:var(--text);font-weight:700;">XL</td>
-<td>48"</td>
-<td>31"</td>
-<td>24"</td>
-<td>Boxy</td>
+<td>44"</td>
+<td>29"</td>
+<td>20"</td>
+<td>Relaxed</td>
 </tr>
 <tr>
 <td style="color:var(--text);font-weight:700;">XXL</td>
-<td>50"</td>
-<td>32"</td>
-<td>25"</td>
-<td>Boxy</td>
+<td>46"</td>
+<td>30"</td>
+<td>21"</td>
+<td>Relaxed</td>
 </tr>
 </tbody>
 </table>
 
 <div class="size-note fade-in">
-<strong>Pro Tip:</strong> If you're between sizes, size down for a relaxed fit or stay true to size for the full oversized look. Model is 6'0" wearing size L.
+<strong>Pro Tip:</strong> Our tees are designed for a premium fit. Size up for a more relaxed, roomier feel or choose your regular size for a clean, tailored look. Model is 6'0" wearing size L.
 </div>
 </div>
 </section>
@@ -1478,9 +1751,10 @@ Every time you put it on, remember: fortune favors the bold.
 <p style="color:var(--text-muted);margin-top:20px;">Be the first to know about Drop 02, exclusive releases, and member-only discounts.</p>
 
 <form class="newsletter-form" onsubmit="handleSubscribe(event)">
-<input type="email" placeholder="Enter your email" required>
-<button type="submit" class="btn-primary">Subscribe</button>
+<input type="email" placeholder="Enter your email" required id="newsletter-email">
+<button type="submit" class="btn-primary" id="newsletter-btn">Subscribe</button>
 </form>
+<p id="newsletter-message" class="newsletter-message"></p>
 
 <p style="margin-top:20px;font-size:12px;color:var(--text-muted);">No spam. Unsubscribe anytime.</p>
 </div>
@@ -1532,30 +1806,73 @@ Every time you put it on, remember: fortune favors the bold.
 </div>
 </footer>
 
-<script>
-// Cart functionality
-let cart = [];
+<!-- Toast Notification -->
+<div id="toast" class="toast"></div>
 
-function addToCart(name, price, image) {
-const existingItem = cart.find(item => item.name === name);
+<script>
+// Cart functionality with localStorage
+let cart = [];
+let selectedSizes = {1: 'M', 2: 'M', 3: 'M'};
+
+// Load cart from localStorage
+function loadCart() {
+const saved = localStorage.getItem('fleekers_cart');
+if (saved) {
+cart = JSON.parse(saved);
+updateCartUI();
+}
+}
+
+// Save cart to localStorage
+function saveCart() {
+localStorage.setItem('fleekers_cart', JSON.stringify(cart));
+}
+
+function selectSize(productId, size, btn) {
+selectedSizes[productId] = size;
+const card = document.querySelector(`[data-product-id="${productId}"]`);
+card.querySelectorAll('.size-selector button').forEach(b => b.classList.remove('active'));
+btn.classList.add('active');
+}
+
+function addToCart(name, price, image, productId) {
+const size = selectedSizes[productId] || 'M';
+const existingItem = cart.find(item => item.name === name && item.size === size);
+
 if (existingItem) {
 existingItem.quantity += 1;
+showToast(`Added another ${name} (Size ${size})`);
 } else {
 cart.push({
 name: name,
 price: price,
 image: image,
 quantity: 1,
-size: 'M'
+size: size
 });
+showToast(`${name} (Size ${size}) added to cart`);
 }
+
+saveCart();
 updateCartUI();
-openCart();
 }
 
 function removeFromCart(index) {
 cart.splice(index, 1);
+saveCart();
 updateCartUI();
+}
+
+function updateQuantity(index, change) {
+const item = cart[index];
+item.quantity += change;
+
+if (item.quantity <= 0) {
+removeFromCart(index);
+} else {
+saveCart();
+updateCartUI();
+}
 }
 
 function updateCartUI() {
@@ -1578,12 +1895,17 @@ total += item.price * item.quantity;
 html += `
 <div class="cart-item">
 <div class="cart-item-image">
-<img src="${item.image}" alt="${item.name}">
+<img src="${item.image}" alt="${item.name}" onerror="this.src='https://via.placeholder.com/100x130/161616/ffffff?text=No+Image'">
 </div>
 <div class="cart-item-details">
 <div class="cart-item-name">${item.name}</div>
 <div class="cart-item-price">₹${item.price}</div>
-<div class="cart-item-size">Qty: ${item.quantity} | Size: ${item.size}</div>
+<div class="cart-item-size">Size: ${item.size}</div>
+<div class="qty-control">
+<button onclick="updateQuantity(${index}, -1)" aria-label="Decrease quantity">−</button>
+<span>${item.quantity}</span>
+<button onclick="updateQuantity(${index}, 1)" aria-label="Increase quantity">+</button>
+</div>
 <button class="remove-item" onclick="removeFromCart(${index})">Remove</button>
 </div>
 </div>
@@ -1611,31 +1933,91 @@ closeCart();
 }
 }
 
+function validateCustomerForm() {
+const name = document.getElementById('customer-name').value.trim();
+const phone = document.getElementById('customer-phone').value.trim();
+const address = document.getElementById('customer-address').value.trim();
+
+if (!name || !phone || !address) {
+showToast('Please fill in all delivery details');
+return false;
+}
+if (!/^\d{10}$/.test(phone)) {
+showToast('Please enter a valid 10-digit phone number');
+return false;
+}
+return { name, phone, address };
+}
+
 function checkoutWhatsApp() {
 if (cart.length === 0) return;
-let message = "Hey Fleekers! I want to order:\n\n";
+const customer = validateCustomerForm();
+if (!customer) return;
+
+let message = `*New Order from Fleekers*\n\n`;
+message += `*Customer:* ${customer.name}\n`;
+message += `*Phone:* ${customer.phone}\n`;
+message += `*Address:* ${customer.address}\n\n`;
+message += `*Order Details:*\n`;
+
 let total = 0;
 cart.forEach(item => {
 message += `• ${item.name} - Size ${item.size} x${item.quantity} - ₹${item.price * item.quantity}\n`;
 total += item.price * item.quantity;
 });
-message += `\nTotal: ₹${total}\n\nPlease confirm availability.`;
+
+message += `\n*Total: ₹${total}*\n`;
+message += `\nPlease confirm availability.`;
+
 const url = `https://wa.me/918496959376?text=${encodeURIComponent(message)}`;
 window.open(url, '_blank');
+
+// Clear cart after successful redirect
+setTimeout(() => {
+cart = [];
+saveCart();
+updateCartUI();
+closeCart();
+showToast('Order sent! Check WhatsApp');
+}, 1000);
 }
 
 function checkoutInstagram() {
 if (cart.length === 0) return;
-let message = "Hey Fleekers! I want to order:\n\n";
+const customer = validateCustomerForm();
+if (!customer) return;
+
+let message = `Hey Fleekers! I want to order:\n\n`;
 let total = 0;
 cart.forEach(item => {
 message += `• ${item.name} - Size ${item.size} x${item.quantity} - ₹${item.price * item.quantity}\n`;
 total += item.price * item.quantity;
 });
-message += `\nTotal: ₹${total}`;
-const url = `https://www.instagram.com/fleekers.in`;
-window.open(url, '_blank');
-alert("Please DM us on Instagram with your order:\n\n" + message);
+message += `\nTotal: ₹${total}\n\n`;
+message += `Name: ${customer.name}\n`;
+message += `Phone: ${customer.phone}\n`;
+message += `Address: ${customer.address}`;
+
+// Copy to clipboard
+navigator.clipboard.writeText(message).then(() => {
+showToast('Order details copied! Opening Instagram...');
+setTimeout(() => {
+window.open('https://www.instagram.com/fleekers.in', '_blank');
+}, 1000);
+}).catch(() => {
+showToast('Please copy order manually');
+window.open('https://www.instagram.com/fleekers.in', '_blank');
+});
+}
+
+// Toast notification
+function showToast(message) {
+const toast = document.getElementById('toast');
+toast.textContent = message;
+toast.classList.add('show');
+setTimeout(() => {
+toast.classList.remove('show');
+}, 3000);
 }
 
 // Preloader
@@ -1666,22 +2048,45 @@ document.getElementById('shop').scrollIntoView({behavior:'smooth'});
 // Handle newsletter
 function handleSubscribe(e){
 e.preventDefault();
-const email=e.target.querySelector('input').value;
-alert(`Thanks for subscribing! We'll keep you updated on Drop 02 at ${email}`);
-e.target.reset();
+const emailInput = document.getElementById('newsletter-email');
+const btn = document.getElementById('newsletter-btn');
+const message = document.getElementById('newsletter-message');
+const email = emailInput.value.trim();
+
+// Email validation
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+if (!emailRegex.test(email)) {
+message.textContent = 'Please enter a valid email address';
+message.className = 'newsletter-message error';
+return;
+}
+
+// Simulate submission
+btn.textContent = 'Subscribing...';
+btn.disabled = true;
+
+setTimeout(() => {
+message.textContent = `Thanks for subscribing! We'll keep you updated on Drop 02 at ${email}`;
+message.className = 'newsletter-message success';
+emailInput.value = '';
+btn.textContent = 'Subscribe';
+btn.disabled = false;
+}, 1500);
 }
 
 // Mobile menu toggle
 function toggleMobileMenu(){
-const nav=document.querySelector('.nav-links');
-nav.style.display=nav.style.display==='flex'?'none':'flex';
-nav.style.position='absolute';
-nav.style.top='100%';
-nav.style.left='0';
-nav.style.width='100%';
-nav.style.background='var(--bg)';
-nav.style.flexDirection='column';
-nav.style.padding='20px';
+const nav=document.getElementById('navLinks');
+const overlay=document.querySelector('.mobile-menu-overlay');
+nav.classList.toggle('active');
+overlay.classList.toggle('active');
+}
+
+function closeMobileMenu(){
+const nav=document.getElementById('navLinks');
+const overlay=document.querySelector('.mobile-menu-overlay');
+nav.classList.remove('active');
+overlay.classList.remove('active');
 }
 
 // Intersection Observer for fade-in animations
@@ -1710,6 +2115,9 @@ if(heroBg){
 heroBg.style.transform=`translateY(${scrolled*0.5}px)`;
 }
 });
+
+// Initialize
+loadCart();
 </script>
 
 </body>
