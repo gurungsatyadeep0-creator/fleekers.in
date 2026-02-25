@@ -132,8 +132,8 @@ function fbEvent(name, params) {
 })();
 </script>
 
-<!-- Razorpay — uncomment when you have a Razorpay account -->
-<!-- <script src="https://checkout.razorpay.com/v1/checkout.js"></script> -->
+<!-- Razorpay Checkout -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎲</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -1836,6 +1836,10 @@ Secure checkout • 7-day returns • COD available
 <div class="payment-option-label">Card / Netbanking</div>
 </div>
 </div>
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;padding:10px 14px;background:rgba(0,232,122,0.06);border:1px solid rgba(0,232,122,0.15);font-size:11px;color:var(--success);">
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+  <span>Online payments secured by <strong>Razorpay</strong> — PCI DSS compliant. Your card details are never stored.</span>
+</div>
 <div class="cod-note" id="codNote">
 ⚠️ A quick verification call may be made to confirm COD orders. Please ensure your WhatsApp number is reachable.
 </div>
@@ -2430,7 +2434,7 @@ Add to Cart
 <span class="faq-icon">+</span>
 </button>
 <div class="faq-answer">
-<p>7-day hassle-free returns and free size exchanges. Items must be unworn with tags attached. WhatsApp us or email hello@fleekers.in to initiate. Refunds processed within 48 hours of receiving the return.</p>
+<p>7-day hassle-free returns and free size exchanges. Items must be unworn with tags attached. WhatsApp us or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="325a575e5e5d72545e5757595740411c5b5c">[email&#160;protected]</a> to initiate. Refunds processed within 48 hours of receiving the return.</p>
 </div>
 </div>
 </div>
@@ -2529,7 +2533,7 @@ Add to Cart
 <h3>FLEEKERS.</h3>
 <p>Premium minimal streetwear for those who bet on themselves. Made in India, designed for the world.</p>
 <div class="footer-contact">
-<div class="footer-contact-item"><strong>Email:</strong><span>hello@fleekers.in</span></div>
+<div class="footer-contact-item"><strong>Email:</strong><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="29414c454546694f454c4c424c5b5a074047">[email&#160;protected]</a></span></div>
 <div class="footer-contact-item"><strong>WhatsApp:</strong><span>+91 84969 59376</span></div>
 <div class="footer-contact-item"><strong>Hours:</strong><span>Mon–Sat, 10AM–7PM IST</span></div>
 </div>
@@ -2588,7 +2592,7 @@ Add to Cart
 <button class="sticky-bar-btn" onclick="scrollToShop()">Shop Now</button>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ─── IMAGE PLACEHOLDER (must be first — used by inline onerror attributes) ───
 function makePlaceholderSVG(label, bg, fg) {
   bg = bg || '141414'; fg = fg || 'ccff00';
@@ -2896,6 +2900,14 @@ function selectPayment(el, type) {
   el.classList.add('selected');
   selectedPayment = type;
   document.getElementById('codNote').classList.toggle('show', type === 'cod');
+  // Update submit button label
+  const btn = document.getElementById('submitOrderBtn');
+  if (btn) {
+    const icon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
+    if (type === 'cod') btn.innerHTML = icon + ' Place Order (COD)';
+    else if (type === 'upi') btn.innerHTML = icon + ' Pay via UPI';
+    else btn.innerHTML = icon + ' Pay via Card / Netbanking';
+  }
 }
 
 // Initialize COD note visible
@@ -2955,6 +2967,38 @@ function validateOrderForm() {
   return valid;
 }
 
+// ══════════════════════════════════════════════
+//  ⚙️  SETUP GUIDE — CONFIGURE BEFORE GOING LIVE
+// ══════════════════════════════════════════════
+//
+//  1. RAZORPAY (Online Payments)
+//     a) Sign up at https://dashboard.razorpay.com
+//     b) Go to Settings → API Keys → Generate Test Key
+//     c) Replace RAZORPAY_KEY_ID below with your key (rzp_test_... for testing)
+//     d) For production: implement a backend to create Razorpay Orders first
+//        (see https://razorpay.com/docs/payment-gateway/server-integration/nodejs/)
+//        then pass the order_id to rzpOptions.order_id below
+//
+//  2. EMAILJS (Order Confirmation Emails)
+//     a) Sign up at https://www.emailjs.com
+//     b) Create a service (Gmail/Outlook) and template
+//     c) Replace YOUR_EMAILJS_PUBLIC_KEY in the emailjs.init() call above
+//     d) Replace YOUR_SERVICE_ID and YOUR_TEMPLATE_ID in sendOrderConfirmationEmail()
+//
+//  3. ANALYTICS
+//     a) Replace G-XXXXXXXXXX with your GA4 Measurement ID
+//     b) Replace YOUR_PIXEL_ID with your Meta Pixel ID
+//
+//  4. WHATSAPP NUMBER
+//     The WhatsApp number is set to +91 84969 59376 — update if different
+//
+// ══════════════════════════════════════════════
+
+// ─── RAZORPAY CONFIG ───
+// ⚠️ IMPORTANT: Replace with your actual Razorpay Key ID from dashboard.razorpay.com
+// Use TEST key (rzp_test_...) for testing, LIVE key (rzp_live_...) for production
+const RAZORPAY_KEY_ID = 'rzp_test_REPLACE_WITH_YOUR_KEY'; // ← Paste your Razorpay Key ID here
+
 function submitOrder(e) {
   e.preventDefault();
 
@@ -2967,7 +3011,6 @@ function submitOrder(e) {
   // Honeypot check
   const hp = document.getElementById('hp_website').value;
   if (hp && hp.trim().length > 0) {
-    // Bot detected — silently fail
     setTimeout(() => showFakeSuccess(), 1000);
     return;
   }
@@ -2981,7 +3024,7 @@ function submitOrder(e) {
   btn.disabled = true;
   btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Processing...`;
 
-  // Gather sanitized data
+  // Gather sanitized order data
   const orderData = {
     name:    sanitize(document.getElementById('f_name').value),
     phone:   sanitize(document.getElementById('f_phone').value),
@@ -2994,44 +3037,139 @@ function submitOrder(e) {
     notes:   sanitize(document.getElementById('f_notes').value),
     cart:    cart,
     discount: discountApplied ? discountAmount : 0,
-    total:   cart.reduce((s,i)=>s+i.price*i.quantity,0) - (discountApplied?discountAmount:0)
+    total:   cart.reduce((s,i) => s + i.price * i.quantity, 0) - (discountApplied ? discountAmount : 0)
   };
 
-  // Generate order ID
   const orderId = 'FL-' + Date.now().toString(36).toUpperCase().slice(-6);
 
-  // Build WhatsApp message
-  let msg = `🎲 *New Fleekers Order*\n*Order ID:* ${orderId}\n\n`;
-  msg += `*Customer:* ${orderData.name}\n`;
-  msg += `*Phone:* ${orderData.phone}\n`;
-  msg += `*Email:* ${orderData.email}\n\n`;
-  msg += `*Items:*\n`;
-  orderData.cart.forEach(item => {
-    msg += `• ${item.name} — Size ${item.size} × ${item.quantity} = ₹${item.price * item.quantity}\n`;
-  });
-  msg += `\n*Payment:* ${orderData.payment.toUpperCase()}\n`;
-  if (orderData.discount > 0) msg += `*Promo Discount:* -₹${orderData.discount}\n`;
-  msg += `*Total:* ₹${orderData.total}\n\n`;
-  msg += `*Ship to:*\n${orderData.address}, ${orderData.city}, ${orderData.state} - ${orderData.pincode}\n`;
-  if (orderData.notes) msg += `\n*Notes:* ${orderData.notes}`;
+  // ─── COD: Send via WhatsApp ───
+  if (selectedPayment === 'cod') {
+    let msg = `🎲 *New Fleekers Order*\n*Order ID:* ${orderId}\n\n`;
+    msg += `*Customer:* ${orderData.name}\n*Phone:* ${orderData.phone}\n*Email:* ${orderData.email}\n\n*Items:*\n`;
+    orderData.cart.forEach(item => {
+      msg += `• ${item.name} — Size ${item.size} × ${item.quantity} = ₹${item.price * item.quantity}\n`;
+    });
+    msg += `\n*Payment:* CASH ON DELIVERY\n`;
+    if (orderData.discount > 0) msg += `*Promo Discount:* -₹${orderData.discount}\n`;
+    msg += `*Total:* ₹${orderData.total}\n\n*Ship to:*\n${orderData.address}, ${orderData.city}, ${orderData.state} - ${orderData.pincode}`;
+    if (orderData.notes) msg += `\n\n*Notes:* ${orderData.notes}`;
 
-  setTimeout(() => {
-    // Open WhatsApp
-    window.open(`https://wa.me/918496959376?text=${encodeURIComponent(msg)}`, '_blank');
-    // Show success
-    document.getElementById('orderFormWrap').style.display = 'none';
-    document.getElementById('orderSummaryBlock').style.display = 'none';
-    const success = document.getElementById('orderSuccess');
-    success.classList.add('show');
-    document.getElementById('orderIdDisplay').textContent = `ORDER #${orderId}`;
-    // Clear cart
-    cart = [];
-    discountApplied = false;
-    discountAmount = 0;
-    updateCartUI();
-    btn.disabled = false;
-    btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>Place Order`;
-  }, 1200);
+    setTimeout(() => {
+      window.open(`https://wa.me/918496959376?text=${encodeURIComponent(msg)}`, '_blank');
+      finalizeOrder(orderId, orderData, btn);
+    }, 900);
+
+  } else {
+    // ─── RAZORPAY ONLINE PAYMENT (UPI / Card / Netbanking) ───
+    if (!RAZORPAY_KEY_ID || RAZORPAY_KEY_ID.includes('REPLACE_WITH_YOUR_KEY')) {
+      showToast('Setup Needed', 'Add your Razorpay Key ID to enable online payments.', true);
+      btn.disabled = false;
+      btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>Place Order`;
+      return;
+    }
+
+    // Amount in paise (Razorpay requires smallest currency unit)
+    const amountPaise = orderData.total * 100;
+
+    const rzpOptions = {
+      key: RAZORPAY_KEY_ID,
+      amount: amountPaise,
+      currency: 'INR',
+      name: 'Fleekers',
+      description: `Drop 01 — Order ${orderId}`,
+      image: 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23080808'/><text y='.9em' font-size='80' x='10'>🎲</text></svg>`),
+      order_id: '', // ⚠️ For production: generate Razorpay Order ID from your backend first
+                    // See: https://razorpay.com/docs/payment-gateway/server-integration/
+      prefill: {
+        name:    orderData.name,
+        email:   orderData.email,
+        contact: '91' + orderData.phone.replace(/\D/g, '')
+      },
+      notes: {
+        order_ref:   orderId,
+        shipping_address: `${orderData.address}, ${orderData.city}, ${orderData.state} - ${orderData.pincode}`,
+        cart_items: orderData.cart.map(i => `${i.name} (${i.size}) x${i.quantity}`).join(', ')
+      },
+      theme: {
+        color: '#ccff00',
+        backdrop_color: 'rgba(0,0,0,0.85)'
+      },
+      method: selectedPayment === 'upi' ? { upi: true } : undefined,
+      handler: function(response) {
+        // Payment successful — response contains razorpay_payment_id
+        const paymentId = response.razorpay_payment_id || 'TXN-VERIFIED';
+
+        // Notify via WhatsApp
+        let msg = `✅ *Fleekers Payment Received*\n*Order ID:* ${orderId}\n*Payment ID:* ${paymentId}\n\n`;
+        msg += `*Customer:* ${orderData.name}\n*Phone:* ${orderData.phone}\n*Email:* ${orderData.email}\n\n*Items:*\n`;
+        orderData.cart.forEach(item => {
+          msg += `• ${item.name} — Size ${item.size} × ${item.quantity} = ₹${item.price * item.quantity}\n`;
+        });
+        msg += `\n*Payment:* ONLINE (${selectedPayment.toUpperCase()}) ✅\n`;
+        if (orderData.discount > 0) msg += `*Promo Discount:* -₹${orderData.discount}\n`;
+        msg += `*Total Paid:* ₹${orderData.total}\n\n*Ship to:*\n${orderData.address}, ${orderData.city}, ${orderData.state} - ${orderData.pincode}`;
+
+        window.open(`https://wa.me/918496959376?text=${encodeURIComponent(msg)}`, '_blank');
+        gaEvent('payment_success', { payment_id: paymentId, method: selectedPayment, value: orderData.total });
+        fbEvent('Purchase', { currency: 'INR', value: orderData.total });
+        finalizeOrder(orderId, orderData, btn, paymentId);
+      },
+      modal: {
+        ondismiss: function() {
+          // User closed Razorpay without paying
+          btn.disabled = false;
+          btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>Place Order`;
+          showToast('Payment Cancelled', 'No charge was made. Try again when ready.', true);
+          gaEvent('payment_dismissed', { method: selectedPayment });
+        }
+      }
+    };
+
+    try {
+      const rzp = new Razorpay(rzpOptions);
+      rzp.on('payment.failed', function(response) {
+        btn.disabled = false;
+        btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>Place Order`;
+        showToast('Payment Failed', `${response.error.description || 'Please try again or use COD.'}`, true);
+        gaEvent('payment_failed', { reason: response.error.reason, method: selectedPayment });
+      });
+      rzp.open();
+    } catch (err) {
+      btn.disabled = false;
+      btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>Place Order`;
+      showToast('Error', 'Could not load payment gateway. Please use COD.', true);
+    }
+  }
+}
+
+// ─── Finalize order after payment / COD confirmation ───
+function finalizeOrder(orderId, orderData, btn, paymentId) {
+  document.getElementById('orderFormWrap').style.display = 'none';
+  document.getElementById('orderSummaryBlock').style.display = 'none';
+  const success = document.getElementById('orderSuccess');
+  success.classList.add('show');
+  document.getElementById('orderIdDisplay').textContent = `ORDER #${orderId}`;
+  if (paymentId) {
+    // Show payment confirmation in success state
+    const existingPid = document.getElementById('paymentConfirmId');
+    if (!existingPid) {
+      const pidEl = document.createElement('p');
+      pidEl.id = 'paymentConfirmId';
+      pidEl.style.cssText = 'font-size:11px;color:var(--success);margin-bottom:12px;letter-spacing:1px;';
+      pidEl.innerHTML = `✅ Payment Confirmed &nbsp;|&nbsp; ID: <strong>${paymentId}</strong>`;
+      document.getElementById('orderIdDisplay').after(pidEl);
+    } else {
+      existingPid.innerHTML = `✅ Payment Confirmed &nbsp;|&nbsp; ID: <strong>${paymentId}</strong>`;
+    }
+  }
+  // Clear cart
+  cart = [];
+  discountApplied = false;
+  discountAmount = 0;
+  updateCartUI();
+  btn.disabled = false;
+  btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>Place Order`;
+  gaEvent('purchase', { transaction_id: orderId, currency: 'INR', value: orderData.total });
 }
 
 function showFakeSuccess() {
@@ -3462,14 +3600,15 @@ function showShareToast(msg) {
 }
 
 // ══════════════════════════════════════════════
-//  PATCH submitOrder — add email + analytics
+//  ANALYTICS — CHECKOUT EVENTS
+//  (GA4 purchase event is fired inside finalizeOrder above)
 // ══════════════════════════════════════════════
-const _origSubmitOrder = submitOrder;
-window.submitOrder = function(e) {
-  // We'll intercept after original runs — track events here
-  gaEvent('begin_checkout', { currency: 'INR', value: cart.reduce((s,i)=>s+i.price*i.quantity,0) });
-  fbEvent('InitiateCheckout', { currency: 'INR', value: cart.reduce((s,i)=>s+i.price*i.quantity,0) });
-  _origSubmitOrder(e);
+// Track begin_checkout when order form opens (not on submit — avoids double-counting)
+const _origOpenOrderForm = openOrderForm;
+window.openOrderForm = function() {
+  gaEvent('begin_checkout', { currency: 'INR', value: cart.reduce((s,i) => s + i.price * i.quantity, 0) });
+  fbEvent('InitiateCheckout', { currency: 'INR', value: cart.reduce((s,i) => s + i.price * i.quantity, 0) });
+  _origOpenOrderForm();
 };
 
 // Hook into the order success flow to send email confirmation
@@ -3496,14 +3635,34 @@ const orderSuccessObserver = new MutationObserver(mutations => {
         transaction_id: orderId,
         currency: 'INR',
         value: orderData.total,
-        items: cart.map(i => ({ item_name: i.name, item_variant: i.size, price: i.price, quantity: i.quantity }))
+        items: cart.map(i => ({ item_name: i.name, item_variant: i.size, quantity: i.quantity, price: i.price }))
       });
-      fbEvent('Purchase', { currency: 'INR', value: orderData.total });
     }
   });
 });
+
+// Observe the orderSuccess element for class changes
 const orderSuccessEl = document.getElementById('orderSuccess');
-if (orderSuccessEl) orderSuccessObserver.observe(orderSuccessEl, { attributes: true, attributeFilter: ['class'] });
+if (orderSuccessEl) {
+  orderSuccessObserver.observe(orderSuccessEl, { attributes: true, attributeFilter: ['class'] });
+}
+
+// ─── SEND ORDER CONFIRMATION EMAIL ───
+function sendOrderConfirmationEmail(orderData) {
+  if (typeof emailjs === 'undefined') return;
+  // Configure in EmailJS: create a template with these variables
+  // Replace YOUR_SERVICE_ID and YOUR_TEMPLATE_ID below
+  emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+    to_name:    orderData.name,
+    to_email:   orderData.email,
+    order_id:   orderData.orderId,
+    order_items: orderData.cart.map(i => `${i.name} (${i.size}) x${i.quantity} = ₹${i.price * i.quantity}`).join('\n'),
+    order_total: `₹${orderData.total}`,
+    payment_method: orderData.payment.toUpperCase(),
+    shipping_address: `${orderData.address}, ${orderData.city}, ${orderData.state} - ${orderData.pincode}`,
+    from_name: 'Fleekers'
+  }).catch(() => {}); // Silent fail if EmailJS not configured
+}
 
 </script>
 </body>
