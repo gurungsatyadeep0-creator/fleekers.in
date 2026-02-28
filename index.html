@@ -127,7 +127,7 @@ function fbEvent(name, params) {
 <script>
 (function(){
   if (typeof emailjs !== 'undefined') {
-    emailjs.init('YOUR_EMAILJS_PUBLIC_KEY'); // ← paste your EmailJS public key here
+    emailjs.init('RSbJ6SEJ2jOL34Flg'); // ← paste your EmailJS public key here
   }
 })();
 </script>
@@ -3499,7 +3499,7 @@ function sendOrderConfirmationEmail(orderData) {
   if (typeof emailjs === 'undefined') return;
   // Configure in EmailJS: create a template with these variables
   // Replace YOUR_SERVICE_ID and YOUR_TEMPLATE_ID below
-  emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+  emailjs.send('service_3xxk4sq', 'template_q5ulswj', {
     to_name:    orderData.name,
     to_email:   orderData.email,
     order_id:   orderData.orderId,
